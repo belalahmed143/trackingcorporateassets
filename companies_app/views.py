@@ -181,15 +181,16 @@ def provided_device_list(request):
 @company_required
 def providedeviceAdd(request):
     if request.method =='POST':
-        form = ProvidedDeviceAddForm(request.POST, request.FILES)
+        form = ProvidedDeviceAddForm(request.POST, request.FILES,request.user)
         if form.is_valid():
             form.instance.company = request.user
             form.save()     
             messages.success(request,f'Successfully add new Device')
             return redirect('provided-device-list')
     else:
-        form =ProvidedDeviceAddForm()
+        form =ProvidedDeviceAddForm(request.user)
     return render(request, 'companies_app/add-provided-device.html',{'form':form})
+
     
 @login_required
 @company_required
