@@ -1,0 +1,17 @@
+{% extends 'companies_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="register_page col-11 border  p-3">
+        <h4 class="pt-2" style=" height: 40px; text-align: center;">Add New Company</h4>
+        <form class="my-3"  method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form|crispy}}
+            </div>
+            <button class="btn btn-primary my-2 col-12">Add</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+
+{% extends 'companies_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h3>Employee List</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in device %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{ c.name }}</td>
+                <td><img src="{{ c.image.url }}" alt="" style="height: 50px;"></td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="{% url 'device-info-update' c.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete-device' c.pk %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+                
+
+        </tbody>
+      </table>
+</div>
+{% endblock content %}

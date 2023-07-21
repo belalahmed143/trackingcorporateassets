@@ -1,0 +1,18 @@
+{% extends 'companies_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h4 class="pt-2" style=" height: 40px; text-align: center;">Company Profile Update Form</h4>
+
+    <div class="register_page col-11 border p-3">
+        <form class="my-3"  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form|crispy}}
+            </div>
+            <button class="btn btn-primary my-2 col-12">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

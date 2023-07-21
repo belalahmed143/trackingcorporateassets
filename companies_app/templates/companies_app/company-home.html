@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Employee List</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in employees %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{ c.name }}</td>
+                <td><img src="{{ c.image.url }}" alt="" style="height: 50px;"></td>
+                <td>{{ c.phone }}</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="{% url 'employee-info-update' c.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete-employee' c.pk %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+                
+
+        </tbody>
+      </table>
+</div>

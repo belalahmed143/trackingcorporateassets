@@ -1,0 +1,40 @@
+
+{% extends 'companies_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h3>Provided Device List</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Devaice Name</th>
+            <th scope="col">Checkout Date</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for c in provided_device %}
+            <tr>
+                return_date
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{ c.employee.name }}</td>
+                <td>{{ c.device.name }}</td>
+                <td>{{ c.checkout_date }}</td>
+                <td>{{ c.device.return_date }}</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="{% url 'provided-device-info-update' c.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete-provided-device' c.pk %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+                
+
+        </tbody>
+      </table>
+</div>
+{% endblock content %}
