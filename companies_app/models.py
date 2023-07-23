@@ -13,6 +13,7 @@ class CompaniesProfile(models.Model):
     def __str__(self):
         return self.company.username
 
+
 class Employee(models.Model):
     company   = models.ForeignKey(User,on_delete=models.CASCADE)
     name     = models.CharField(max_length = 150)
@@ -42,6 +43,5 @@ class ProvidedDevice(models.Model):
 
     def __str__(self):
         return self.device.name + ' / ' + self.employee.name
-
 
     

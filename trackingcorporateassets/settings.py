@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'companies_app',
     "crispy_forms",
     "crispy_bootstrap5",
+    'api_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,13 @@ LOGOUT_URL = 'logout'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}

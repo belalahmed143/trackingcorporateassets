@@ -37,12 +37,16 @@ class DeviceAddForm(forms.ModelForm):
         exclude = ('company',)
 
 
+
+
+
 class ProvidedDeviceAddForm(forms.ModelForm):
 
     checkout_date = forms.DateTimeField(required=True,
                                      widget=forms.DateTimeInput(attrs={'type':'datetime-local'}))
     return_date = forms.DateTimeField(required=False,
                                           widget=forms.DateTimeInput(attrs={'type':'datetime-local'}))
+   
     def __init__(self, user, *args, **kwargs):
         super(ProvidedDeviceAddForm, self).__init__(*args, **kwargs)
         self.fields['employee'].queryset = Employee.objects.filter(company=user)
