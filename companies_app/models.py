@@ -42,4 +42,6 @@ class ProvidedDevice(models.Model):
 
     def __str__(self):
         return self.device.name + ' / ' + self.employee.name
+
+
     
